@@ -14,10 +14,10 @@
    application will automatically reload whenever you modify any of the source files.
 
 
-## API information
+## API documentation
 https://pokeapi.co/docs/v2#pokemon
 
-Assignments
+## Assignments
 1. Create a resource in the [pokemon.service.ts](src/app/services/pokemon.service.ts) file that will fetch a list of 
    pokemon from the API, and update the [pokedex.component.ts](src/app/smart-components/pokedex/pokedex.component.ts) file to use this resource and extract its data.
 2. Use the `selectedPokemon` signal to fetch the details of that pokemon, and put it in the `selectedPokemonDetail` signal.

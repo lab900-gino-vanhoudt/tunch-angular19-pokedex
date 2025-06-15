@@ -1,4 +1,6 @@
 # Tunch Angular19 Pokedex
+## Presentation
+https://docs.google.com/presentation/d/1-P3JcWNF77E43qAuQC5CbRW0Fwm7d4sgAo2iMFFv74E/edit?usp=sharing
 
 ## Local setup
 1. Install the latest version of [Node.js](https://nodejs.org/en/download/)

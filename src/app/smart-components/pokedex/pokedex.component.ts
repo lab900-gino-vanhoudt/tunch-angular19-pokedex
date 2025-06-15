@@ -24,22 +24,30 @@ export class PokedexComponent {
 
   /* TODO: use the pokemons resource from the service to get your pokemons */
   pokemonsResource = this.#pokemonService.pokemonsResource;
-  pokemons = signal<Pokemon[]>([]);
-  loadingPokemons = signal(false);
+  pokemons = computed(() => this.pokemonsResource.value()?.results ?? []);
+  loadingPokemons = this.pokemonsResource.isLoading;
 
   /* TODO: load the pokemon detail, based on the selected pokemon */
-  selectedPokemonDetailResource =
-    this.#pokemonService.getPokemonDetailResource();
-  selectedPokemonDetail = signal(undefined);
-  loadingPokemonDetail = signal(false);
+  selectedPokemonDetailResource = this.#pokemonService.getPokemonDetailResource(
+    this.selectedPokemon,
+  );
+  selectedPokemonDetail = this.selectedPokemonDetailResource.value;
+  loadingPokemonDetail = this.selectedPokemonDetailResource.isLoading;
 
-  /* TODO: *Gino-15 Jun 2025* calculate the last selected pokemon */
-  lastSeenPokemon = signal<PokemonDetail | undefined>(undefined);
+  lastSeenPokemon = linkedSignal<
+    PokemonDetail | undefined,
+    PokemonDetail | undefined
+  >({
+    source: this.selectedPokemonDetail,
+    computation: (current, previous) => {
+      return current != null ? previous?.source : undefined;
+    },
+  });
 
   reloadPokemons(): void {
     this.selectedPokemon.set(undefined);
     /* TODO: reload all the pokemons from the list */
-    // ...
+    this.pokemonsResource.reload();
   }
 
   toggleSelectedPokemon(pokemon: Pokemon): void {

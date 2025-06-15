@@ -1,0 +1,24 @@
+$color-red: #ef5350;
+$color-blue: #001939ef;
+
+h2 {
+  margin-top: 0;
+}
+
+.pokemon-detail {
+  padding: 20px;
+  background-color: #fff;
+  border: 3px solid $color-red;
+  border-radius: 20px;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.sprite {
+  border-radius: 15px;
+  border: 3px solid $color-red;
+}

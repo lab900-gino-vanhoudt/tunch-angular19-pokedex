@@ -1,0 +1,20 @@
+<div class="pokemon-detail">
+  <h2>#{{ pokemon().id }} {{ pokemon().name }}</h2>
+  <div class="pokemon-detail__container">
+    <img
+      [ngSrc]="pokemon().sprites.front_default"
+      [width]="100"
+      [height]="100"
+      alt="{{ pokemon().name }}"
+      class="sprite"
+    />
+    <ul>
+      <li><strong>Type(s):</strong> {{ types() }}</li>
+      <li><strong>Height:</strong> {{ pokemon().height }}</li>
+      <li><strong>Weight:</strong> {{ pokemon().weight }}</li>
+    </ul>
+  </div>
+</div>
+<audio autoplay>
+  <source [src]="cryUrl()" type="audio/ogg" />
+</audio>

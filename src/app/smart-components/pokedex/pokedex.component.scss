@@ -1,0 +1,93 @@
+$color-red: #ef5350;
+$color-blue: #001939ef;
+
+.pokedex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.pokemon-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+
+  border-radius: 20px;
+  padding: 15px;
+  cursor: pointer;
+  color: #fff;
+  background-color: $color-red;
+  width: 350px;
+
+  .loading,
+  .no-pokemons-found {
+    font-weight: bold;
+    padding: 20px;
+  }
+
+  button {
+    padding: 10px;
+    background-color: $color-blue;
+    color: white;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+}
+
+.pokemon-item {
+  width: 90%;
+  padding: 10px 20px;
+  background-color: $color-red;
+  font-weight: bold;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  &.selected {
+    background-color: white;
+    color: #000;
+  }
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+
+  .arrow {
+    color: $color-red;
+  }
+}
+
+.pokemon-detail {
+  width: 350px;
+  .sticky-container {
+    position: sticky;
+    top: 20px;
+  }
+  .loading {
+    color: white;
+    padding: 20px;
+    font-weight: bold;
+  }
+  .last-seen-pokemon {
+    font-weight: bold;
+    color: $color-red;
+    padding: 20px;
+    .label {
+      color: darkgrey;
+    }
+  }
+}

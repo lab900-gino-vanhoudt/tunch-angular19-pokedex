@@ -1,0 +1,45 @@
+<div class="pokedex">
+  <div class="pokemon-list">
+    @if (loadingPokemons()) {
+      <span class="loading">Loading pokemons...</span>
+    } @else {
+      @for (pokemon of pokemons(); track pokemon.name) {
+        <div
+          class="pokemon-item"
+          (click)="toggleSelectedPokemon(pokemon)"
+          [class.selected]="pokemon.name === selectedPokemon()?.name"
+        >
+          <span>{{ pokemon.name }}</span>
+          <span class="arrow">&#10148;</span>
+        </div>
+      } @empty {
+        <span class="no-pokemons-found">No pokemons found</span>
+      }
+    }
+    <button
+      disabled="{{ loadingPokemons() ? 'disabled' : '' }}"
+      (click)="reloadPokemons()"
+    >
+      <span>&orarr;</span>
+      Reload all pokemon
+    </button>
+  </div>
+
+  <div class="pokemon-detail">
+    <div class="sticky-container">
+      @if (loadingPokemonDetail()) {
+        <span class="loading">Loading pokemon detail...</span>
+      } @else {
+        @if (selectedPokemonDetail(); as selectedPokemonDetail) {
+          <app-pokemon-detail [pokemon]="selectedPokemonDetail" />
+        }
+        @if (lastSeenPokemon(); as lastSeenPokemon) {
+          <div class="last-seen-pokemon">
+            <span class="label">Last seen pokemon:</span>&nbsp;
+            <span>{{ lastSeenPokemon.name }}</span>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</div>
